@@ -4,6 +4,8 @@ import AdminLogin from './pages/AdminLogin';
 import Dashboard from './pages/Dashboard';
 import VolunteerPage from './pages/VolunteerPage';
 
+import ProtectedRoute from './routes/ProtectedRoute';
+
 function App() {
 	return (
 		<Routes>
@@ -13,7 +15,14 @@ function App() {
 
 			<Route path='/admin/login' element={<AdminLogin />} />
 
-			<Route path='/admin/dashboard' element={<Dashboard />} />
+			<Route
+				path='/admin/dashboard'
+				element={
+					<ProtectedRoute>
+						<Dashboard />
+					</ProtectedRoute>
+				}
+			/>
 		</Routes>
 	);
 }
