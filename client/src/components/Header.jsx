@@ -78,6 +78,15 @@ function Header() {
 								</Link>
 							)}
 
+							<div className='hidden sm:flex flex-col text-right'>
+								<span className='text-sm font-bold text-slate-100'>
+									{user?.name || 'Admin'}
+								</span>
+								<span className='text-xs text-slate-400 font-medium'>
+									{user?.email || 'admin@nayepankh.org'}
+								</span>
+							</div>
+
 							<button
 								onClick={handleLogout}
 								className='inline-flex items-center gap-2
