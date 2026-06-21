@@ -2,6 +2,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 
 import authRoutes from './routes/auth.routes.js';
+import volunteerRoutes from './routes/volunteer.routes.js';
 
 const app = express();
 
@@ -16,5 +17,6 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/auth', authRoutes);
+app.use('/api/volunteers', volunteerRoutes);
 
 export default app;
