@@ -1,7 +1,24 @@
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import logo from '../assets/logo.avif';
+import { useAuth } from '../context/AuthContext';
+import { logoutAdmin } from '../api/authApi';
+import { FiLogOut, FiHeart, FiUser } from 'react-icons/fi';
 
 function Header() {
+	const { user, logout } = useAuth();
+	const navigate = useNavigate();
+
+	const handleLogout = async () => {
+		try {
+			await logoutAdmin();
+		} catch (err) {
+			console.error('Logout failed:', err);
+		} finally {
+			logout();
+			navigate('/admin/login');
+		}
+	};
+
 	return (
 		<header className='sticky top-0 z-50 border-b border-slate-800 bg-slate-950/90 backdrop-blur-md'>
 			<div className='mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8'>
@@ -22,13 +39,72 @@ function Header() {
 					</h1>
 				</Link>
 
-				<nav>
-					<Link
-						to='#'
-						className='rounded-xl border border-slate-700 px-4 py-2 text-sm font-medium text-slate-300 transition-all duration-200 hover:border-orange-500 hover:bg-orange-500/10 hover:text-orange-400 active:scale-95'
-					>
-						Admin Login
-					</Link>
+				<nav className='flex gap-4'>
+					{user ? (
+						<>
+							<Link
+								to='/admin/dashboard'
+								className='
+				inline-flex items-center gap-2
+				rounded-xl
+				border border-slate-700
+				px-4 py-2
+				text-sm font-medium
+				text-slate-300
+				transition-all duration-200
+				hover:border-amber-500
+				hover:bg-amber-500/10
+				hover:text-amber-400
+			'
+							>
+								<FiUser className='h-4 w-4' />
+								Dashboard
+							</Link>
+
+							<button
+								onClick={handleLogout}
+								className='
+				inline-flex items-center gap-2
+				rounded-xl
+				border border-red-500/20
+				bg-red-500/10
+				px-4 py-2
+				text-sm font-medium
+				text-red-400
+				transition-all duration-200
+				hover:border-red-500
+				hover:bg-red-500
+				hover:text-white
+				active:scale-95
+				cursor-pointer
+			'
+							>
+								<FiLogOut className='h-4 w-4' />
+								Logout
+							</button>
+						</>
+					) : (
+						<>
+							<Link
+								to='/admin/login'
+								className='
+				inline-flex items-center
+				rounded-xl
+				border border-slate-700
+				px-4 py-2
+				text-sm font-medium
+				text-slate-300
+				transition-all duration-200
+				hover:border-orange-500
+				hover:bg-orange-500/10
+				hover:text-orange-400
+				active:scale-95
+			'
+							>
+								Admin Login
+							</Link>
+						</>
+					)}
 				</nav>
 			</div>
 		</header>
