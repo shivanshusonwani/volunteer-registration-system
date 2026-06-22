@@ -167,24 +167,28 @@ function Home() {
 				</div>
 			</section>
 
-			<section className='py-20 bg-slate-900 text-white text-center relative overflow-hidden'>
-				<div className='absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(245,158,11,0.1),transparent_50%)]' />
-				<div className='max-w-4xl mx-auto px-4 z-10 relative space-y-6'>
-					<h2 className='text-3xl sm:text-5xl font-extrabold'>
+			<section className='relative overflow-hidden bg-white py-20 text-center'>
+				<div className='absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(245,158,11,0.12),transparent_50%)]' />
+
+				<div className='relative z-10 mx-auto max-w-4xl space-y-6 px-4'>
+					<h2 className='text-3xl font-extrabold text-slate-900 sm:text-5xl'>
 						Ready to Spread Your Wings?
 					</h2>
-					<p className='text-lg text-slate-300 max-w-xl mx-auto leading-relaxed'>
+
+					<p className='mx-auto max-w-xl text-lg leading-relaxed text-slate-600'>
 						It only takes a few minutes to fill out the form. Join
 						our digital channel, get updates, and attend the next
 						orientation drive in your city.
 					</p>
+
 					<div>
 						<Link
 							to='/volunteer'
-							className='inline-flex items-center justify-center gap-2 px-8 py-4 bg-linear-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-[1.02] cursor-pointer'
+							className='
+					inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-amber-500 to-orange-600 px-8 py-4 font-semibold text-white shadow-lg shadow-amber-500/20 transition-all duration-200 hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-500/30'
 						>
 							Become Volunteer Now
-							<FiArrowRight className='w-5 h-5' />
+							<FiArrowRight className='h-5 w-5' />
 						</Link>
 					</div>
 				</div>
